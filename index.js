@@ -1,47 +1,54 @@
 var spawnSync = require('child_process').spawnSync;
+var util = require('util');
 
 var iTunes_script = "airplay_control.scpt";
 
-module.exports = iTunesSmarl;
+module.exports = {iTunesSmarl:iTunesSmarl};
 
 
 function iTunesSmarl() {
 };
 
-var runscript = function(command, value){
-    var args = [iTunes_script, command];
+var runScript = function(command, value){
+    var args = [__dirname + '/' + iTunes_script, command];
     if( value != null ) {
         args.push(value);
     }
     var cmdOutput = spawnSync('/usr/bin/osascript', args);
-    return cmdOutput.stdout.trim();
+    console.error( String(cmdOutput.stderr) );
+    return String(cmdOutput.stdout).trim();
+}
+
+var runScriptToArray = function(command) {
+    var command_result = runScript(command).split("|||");
+    return util.isArray(command_result) ? command_result : [command_result];
 }
 
 iTunesSmarl.prototype.ListAirplay = function(){
-    return runscript("list").split("|||");
+    return runScriptToArray("list");
 }
 
 iTunesSmarl.prototype.CurrentAirplay = function(){
-    return runscript("current");
+    return runScript("current");
 }
 
 iTunesSmarl.prototype.SetAirplay = function(dev){
-    return runscript("set", dev);
+    return runScript("set", dev);
 }
 
 iTunesSmarl.prototype.RemoveAirplay = function(dev){
-    return runscript("remove", dev);
+    return runScript("remove", dev);
 }
 
 iTunesSmarl.prototype.Playlists = function(){
-    return runscript("playlists", dev);
+    return runScriptToArray("playlists");
 }
 
 iTunesSmarl.prototype.Play = function(playlist){
-    return runscript("play", playlist);
+    return runScript("play", playlist);
 }
 
 iTunesSmarl.prototype.Stop = function(){
-    return runscript("stop");
+    return runScript("stop");
 }
 

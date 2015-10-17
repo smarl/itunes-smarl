@@ -1,0 +1,47 @@
+{
+  "name": "itunes-smarl",
+  "version": "0.0.1",
+  "description": "Some itunes functions.",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smarl/itunes-smarl"
+  },
+  "keywords": [
+    "itunes"
+  ],
+  "contributors": [
+    {
+      "name": "Vincent Bumgarner",
+      "email": "itunes-smarl@brokenneon.com",
+      "url": "http://brokenneon.com/"
+    }
+  ],
+  "license": "BSD",
+  "dependencies": {
+  },
+  "bugs": {
+    "url": "https://github.com/smarl/itunes-smarl/issues"
+  },
+  "homepage": "https://github.com/smarl/itunes-smarl",
+  "_id": "itunes-smarl@0.0.1",
+  "_shasum": "61de498a0fc73366ed9645ddd57e4c2f70788e26",
+  "_from": "node-persist@0.0.3",
+  "_npmVersion": "1.4.9",
+  "_npmUser": {
+    "name": "slast",
+    "email": "hello@simonlast.org"
+  },
+  "maintainers": [
+    {
+      "name": "smarl",
+      "email": "itunes-smarl@brokenneon.com"
+    }
+  ]
+}
